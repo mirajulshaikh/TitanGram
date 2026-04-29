@@ -1,0 +1,26 @@
+import React, { useState } from 'react';
+
+const TitanGram = () => {
+  const [posts] = useState([
+    { id: 1, type: 'image', url: 'https://via.placeholder.com/400', caption: 'আমার প্রথম পোস্ট' },
+    { id: 2, type: 'video', url: 'https://www.w3schools.com/html/mov_bbb.mp4', caption: 'আমার ভিডিও পোস্ট' }
+  ]);
+
+  return (
+    <div style={{ maxWidth: '400px', margin: '0 auto', fontFamily: 'Arial' }}>
+      <h1 style={{ textAlign: 'center', color: '#333' }}>TitanGram</h1>
+      {posts.map(post => (
+        <div key={post.id} style={{ border: '1px solid #ddd', marginBottom: '20px', borderRadius: '8px', overflow: 'hidden' }}>
+          {post.type === 'image' ? (
+            <img src={post.url} alt="post" style={{ width: '100%' }} />
+          ) : (
+            <video src={post.url} controls style={{ width: '100%' }} />
+          )}
+          <p style={{ padding: '10px', margin: '0' }}>{post.caption}</p>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default TitanGram;
